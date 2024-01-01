@@ -1,0 +1,16 @@
+
+POST http://localhost:5001/api/reservations/totalRevenueOnPeriod HTTP/1.1
+content-type: application/json   
+  
+{"year": "2023", "month": 3}
+//{"reservationId": 1}
+//{"customerId" : "1"}
+//{"payment":  "40", "startDate":"2023-05-10","endDate":"2023-11-05","customerId":"4", "plateId":"20"}
+//{"model":  "some new model","year":2020,"color":"black","seatAmount":4,"officeId":5,"plateId":124,"image_url":"http:// image link","carStatus":"A"}
+//{"name": "lkjhg", "passportInfo": "", "address": "maharam bek"}
+//{"day" : "2023-03-20"} 
+//{"startDate": "2005-01-02","endDate": "2024-09-01"}
+ 
+//GET http://localhost:5000/api/users/profile
+
+//POST http://localhost:5000/api/users/logout      

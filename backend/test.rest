@@ -1,0 +1,18 @@
+
+//POST http://localhost:5000/api/users/auth HTTP/1.1
+//content-type: application/json
+
+//{"email": "anas123@gmail.com" , "password": "anasanas"}
+
+
+POST   http://localhost:5000/api/users/ HTTP/1.1
+content-Type: application/json
+
+{
+"email": "anasmuostafa@gmail.com", "password": "anasanas123@A",
+"userName": "anas11",
+"profile_img_url":"http://", "role": "admin"
+}
+
+
+//POST http://localhost:5000/api/users/logout
