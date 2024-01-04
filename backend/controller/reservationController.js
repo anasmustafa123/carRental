@@ -11,7 +11,11 @@ const getSingleReservation = async (req, res) => {
 
 // @desc get all reservations
 // POST
-const getAllReservation = async (req, res) => {};
+const getAllReservation = async (req, res) => {
+  let [result] = await connectDb.query(`SELECT *
+FROM reservation join customer on customer.customerId = reservation.customerId join cars on cars.plateId = reservation.plateId`);
+  res.status(201).json(result);
+};
 
 // not working
 // @desc all reservation within specific period
@@ -83,13 +87,13 @@ const totalRevenue = async (req, res) => {
     await connectDb.query(`SELECT SUM(payment* DATEDIFF(endDate, startDate)) AS totalRevenue
   FROM reservation`);
   res.status(201).json(result[0]);
-}; 
+};
 
 const totalRevenueOnPeriod = async (req, res) => {
   let data = req.body;
   let month = data.month;
   let year = data.year;
-  console.log(year)
+  console.log(year);
   const today = new Date();
   const todaysDate = today.toISOString().split("T")[0];
   const currentYear = today.getFullYear();
@@ -101,7 +105,7 @@ const totalRevenueOnPeriod = async (req, res) => {
   }
   console.log({ todaysDate, startDate });
   let [result] = await connectDb.query(
-    `SELECT SUM(payment*DATEDIFF(endDate, startDate)) AS total_revenue
+    `SELECT SUM(payment*DATEDIFF(endDate, startDate)) AS totalRevenue
   FROM reservation
   WHERE startDate BETWEEN ? AND ?`,
     [startDate, todaysDate]

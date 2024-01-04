@@ -2,29 +2,31 @@ import connectDb from "../config/db.js";
 
 // @desc get cars with specs
 // POST
-const getCars = async (req, res) => {
+const getAvalibleCars = async (req, res) => {
   let specs = req.body;
   let [result] = await connectDb.query(
     `
-    SELECT cars.model, cars.plateId
-        from cars
-        where cars.carStatus = 'A'
+    SELECT cars.model, cars.carStatus, cars.plateId, cars.year, cars.color, cars.seatAmount, cars.image_url
+        from cars 
+        where cars.carStatus = 'A' AND cars.officeId = ?
         union
-        SELECT cars.model, cars.plateId
+        SELECT cars.model, cars.carStatus, cars.plateId, cars.year, cars.color, cars.seatAmount, cars.image_url
         FROM reservation
         RIGHT JOIN cars ON reservation.plateId = cars.plateId
-        WHERE (reservation.startDate < ?
+        WHERE cars.officeId = ? AND (reservation.startDate < ?
                AND reservation.endDate < ?) OR 
                (reservation.startDate > ?
                AND reservation.endDate > ?)`,
     [
-      specs.startDate | "1550-01-01",
-      specs.endDate | "3000-01-01",
-      specs.startDate | "1550-01-01",
-      specs.endDate | "3000-01-01",
+      specs.officeId || 2,
+      specs.officeId || 2,
+      specs.startDate || "1550-01-01",
+      specs.endDate || "3000-01-01",
+      specs.startDate || "1550-01-01",
+      specs.endDate || "3000-01-01",
     ]
   );
-  res.status(201).json({ cars: result || [] });
+  res.status(201).json(result);
 };
 
 // @desc
@@ -77,4 +79,17 @@ const totalNumOfCars = async (req, res) => {
   res.status(201).json(result[0]);
 };
 
-export { getCars, getAllCarsStatusOnDay, addNewCar, removeCar, totalNumOfCars };
+const getAll = async (req, res) => {
+  let [result] = await connectDb.query(`SELECT *
+FROM cars`);
+  res.status(201).json(result);
+};
+
+export {
+  getAvalibleCars,
+  getAllCarsStatusOnDay,
+  addNewCar,
+  removeCar,
+  totalNumOfCars,
+  getAll,
+};

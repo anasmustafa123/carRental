@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function FullCollection(props) {
+  console.log({content: props.content})
   return (
     <>
       <div className="col-md-12">
@@ -11,7 +12,7 @@ export default function FullCollection(props) {
                 <div className="">
                   <div className="user-profile-nav">
                     <div className="btn-add-group">
-                      <button type="submit" className="btn btn-white">
+                      <button  type="submit" className="btn btn-white">
                         <span className="material-icons add-icon">add_box</span>
                         Add New
                       </button>
@@ -33,63 +34,40 @@ export default function FullCollection(props) {
                     <th style={{ width: "10%" }}>{props.data[4]}</th>
                     <th style={{ width: "19%" }}>{props.data[5]}</th>
                     <th style={{ width: "19%" }}>{props.data[6]}</th>
-                    <th className="text-center">{props.data[7]}</th>
+                    <th style={{ width: "19%" }}>{props.data[7]}</th>
+                    <th style={{ width: "19%" }}>{props.data[8]}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-
-                    <td className="text-primary">
-                      <div className="action-btn-group float-right d-flex">
-                        <button
-                          type="button"
-                          className="custom-action-btn btn btn-primary mr-2 edit-btn"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className="custom-action-btn btn btn-danger delete-btn"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td className="text-primary">
-                      <div className="action-btn-group float-right d-flex">
-                        <button
-                          type="button"
-                          className="custom-action-btn btn btn-primary mr-2 edit-btn"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          className="custom-action-btn btn btn-danger delete-btn"
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                  {props.content.map((value) => (
+                    <tr>
+                      <td>{value[`${props.data[0]}`]}</td>
+                      <td>{value[`${props.data[1]}`]}</td>
+                      <td>{value[`${props.data[2]}`]}</td>
+                      <td>{value[`${props.data[3]}`]}</td>
+                      <td>{value[`${props.data[4]}`]}</td>
+                      <td>{value[`${props.data[5]}`]}</td>
+                      <td>{value[`${props.data[6]}`]}</td>
+                      <td>{value[`${props.data[7]}`]}</td>
+                      <td>{value[`${props.data[8]}`]}</td>
+                      <td className="text-primary">
+                        <div className="action-btn-group float-right d-flex">
+                          <button
+                            type="button"
+                            className="custom-action-btn btn btn-primary mr-2 edit-btn"
+                          >
+                            Edit
+                          </button>
+                          <button
+                            type="button"
+                            className="custom-action-btn btn btn-danger delete-btn"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <nav className="custom-pagination" aria-label="...">

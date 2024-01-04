@@ -1,11 +1,13 @@
 import DashBoard from "./components/dashboard/DashBoard";
 import Website from "./components/website/pages/Website";
-
-function App() { 
+import { Route, Routes } from "react-router-dom";
+function App() {
   return (
     <>
-    {/* <Website></Website> */}
-      <DashBoard></DashBoard> 
+      <Routes>
+        <Route path="/" element={<Website></Website>}></Route>
+        <Route path="/admin" element={<DashBoard></DashBoard>}></Route>
+      </Routes>
     </>
   );
 }

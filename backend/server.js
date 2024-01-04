@@ -9,17 +9,17 @@ import carsRoutes from "./routes/carRoutes.js"
 import reservationRoutes from "./routes/reservationRoutes.js"
 import officeRoutes from "./routes/officeRoutes.js"
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
- 
-//adding the .env const to process.env
+import cors from 'cors';//adding the .env const to process.env
 dotenv.config();   
-
-let port = process.env.PORT || 5200;
-const app = express();
  
+let port = process.env.PORT || 5200; 
+const app = express();
+
 //to parse row json and access the body of req
 app.use(express.json());  
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(cors()); 
 
 app.get("/", (req, res) => {
   console.log("anas");
@@ -34,7 +34,7 @@ app.use("/api/offices", officeRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
-
+  
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });  

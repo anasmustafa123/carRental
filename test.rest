@@ -1,13 +1,17 @@
+ 
+POST http://localhost:5001/api/reservations/all HTTP/1.1
+content-type: application/json  
+ 
+{}
+//{"customerId": "1"}
+//{"payment":  "1000", "startDate":"2023-05-10","endDate":"2023-11-05","customerId":"2", "plateId":"ABC123"}
 
-POST http://localhost:5001/api/reservations/totalRevenueOnPeriod HTTP/1.1
-content-type: application/json   
-  
-{"year": "2023", "month": 3}
+//{"name": "lkjhg", "passportInfo": "jaca", "address": "maharam bek"}
+   
+//{"year": "2023", "month": 3}
 //{"reservationId": 1}
 //{"customerId" : "1"}
-//{"payment":  "40", "startDate":"2023-05-10","endDate":"2023-11-05","customerId":"4", "plateId":"20"}
-//{"model":  "some new model","year":2020,"color":"black","seatAmount":4,"officeId":5,"plateId":124,"image_url":"http:// image link","carStatus":"A"}
-//{"name": "lkjhg", "passportInfo": "", "address": "maharam bek"}
+//{"model":  "anas","year":2020,"color":"black","seatAmount":4,"officeId":2,"plateId":15222,"image_url":"http:// image link","carStatus":"A"}
 //{"day" : "2023-03-20"} 
 //{"startDate": "2005-01-02","endDate": "2024-09-01"}
  

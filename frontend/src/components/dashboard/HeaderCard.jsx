@@ -9,7 +9,7 @@ export default function HeaderCard(props) {
             <img src={props.img} alt="building" />
           </div>
           <p className="card-category">{props.name}</p>
-          <h3 className="card-title">0</h3>
+          <h3 className="card-title">{props.count}</h3>
         </div>
 
         <div className="card-body">

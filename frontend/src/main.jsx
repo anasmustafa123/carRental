@@ -3,14 +3,13 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
-import {UserProvider} from "./contextss/website_context.jsx";
-
+import { DashProvider } from "./contextss/dashboard_context.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
+      <DashProvider>
         <App />
-      </UserProvider>
+      </DashProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler";
 //import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
 import { getUser, matchPassword, createUser } from "../models/userModel.js";
+import connectDb from "../config/db.js";
 // @desc  Authorize user/set token
 // @route POST /api/users/auth
 // @access public
@@ -103,4 +104,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }); */
 });
 
-export { authUser, registerUser, logoutUser, getUserProfile };
+const totalNumOfUsers = async (req, res) => {
+  let [result] = await connectDb.query(`SELECT COUNT(email) AS users_num
+  FROM users`);
+  console.log({ result });
+  res.status(201).json(result[0]);
+};
+export { authUser, registerUser, logoutUser, getUserProfile, totalNumOfUsers };
+ 

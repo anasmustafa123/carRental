@@ -1,6 +1,7 @@
 import React from "react";
 
 export default function SemiCollections(props) {
+  console.log(props.content);
   return (
     <>
       <div class={"col-md-12 " + props.size}>
@@ -14,7 +15,7 @@ export default function SemiCollections(props) {
             </div>
             <div class="text-right">
               <h4 class="card-title">{"Total " + props.headerName}</h4>
-              <p class="card-category">0</p>
+              <p class="card-category">{props.count}</p>
             </div>
           </div>
           <div class="card-body table-responsive">
@@ -26,18 +27,14 @@ export default function SemiCollections(props) {
                 <th>{props.data[3]}</th>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Dakota Rice</td>
-                  <td>0</td>
-                  <td>444, South Paikpara, Mirpur, Dhaka</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Dakota Rice</td>
-                  <td>+880 00000 0000000</td>
-                  <td>444, South Paikpara, Mirpur, Dhaka</td>
-                </tr>
+                {props.content.slice(0, 2).map((value) => (
+                  <tr>
+                    <td>{value[`${props.data[0]}`]}</td>
+                    <td>{value[`${props.data[1]}`]}</td>
+                    <td>{value[`${props.data[2]}`]}</td>
+                    <td>{value[`${props.data[3]}`]}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

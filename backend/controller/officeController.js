@@ -17,4 +17,18 @@ const addNewOffice = async (req, res) => {
   res.status(201).json({ reservations: result });
 };
 
-export { addNewOffice };
+
+const totalNumOfOffices = async (req, res) => {
+  let [result] = await connectDb.query(`SELECT COUNT(officeId) AS offices_num
+  FROM office`);
+  res.status(201).json(result[0]);
+};
+
+
+const getOffices = async (req, res) => {
+  let [result] = await connectDb.query(`SELECT location FROM office`);
+  console.log(result);
+  res.status(201).json(result);
+};
+
+export { addNewOffice, totalNumOfOffices, getOffices };

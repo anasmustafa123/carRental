@@ -1,14 +1,15 @@
 import React from "react";
-
-
-export default function Cars_Cell() {
+import { useState, useEffect } from "react";
+import Checkout from "../pages/Checkout";
+export default function Cars_Cell(data) {
+  console.log({ data });
   return (
     <>
-      <li>
+      <>
         <div class="featured-car-card">
           <figure class="card-banner">
             <img
-              src="/website_imgs/car-1.jpg"
+              src={data.image_url}
               alt="Toyota RAV4 2021"
               loading="lazy"
               width="440"
@@ -20,11 +21,11 @@ export default function Cars_Cell() {
           <div class="card-content">
             <div class="card-title-wrapper">
               <h3 class="h3 card-title">
-                <a href="#">Toyota RAV4</a>
+                <a href="#">{data.model}</a>
               </h3>
 
               <data class="year" value="2021">
-                2021
+                {data.year}
               </data>
             </div>
 
@@ -32,19 +33,19 @@ export default function Cars_Cell() {
               <li class="card-list-item">
                 <ion-icon name="people-outline"></ion-icon>
 
-                <span class="card-item-text">4 People</span>
+                <span class="card-item-text">{data.seatAmount} People</span>
               </li>
 
               <li class="card-list-item">
-                <ion-icon name="flash-outline"></ion-icon>
+                <ion-icon name="color-fill-outline"></ion-icon>
 
-                <span class="card-item-text">Hybrid</span>
+                <span class="card-item-text">{data.color}</span>
               </li>
 
               <li class="card-list-item">
-                <ion-icon name="speedometer-outline"></ion-icon>
+                <ion-icon name="keypad-outline"></ion-icon>
 
-                <span class="card-item-text">6.1km / 1-litre</span>
+                <span class="card-item-text">{data.plateId}</span>
               </li>
 
               <li class="card-list-item">
@@ -58,16 +59,19 @@ export default function Cars_Cell() {
               <p class="card-price">
                 <strong>$440</strong> / month
               </p>
-
               <button class="btn fav-btn" aria-label="Add to favourite list">
                 <ion-icon name="heart-outline"></ion-icon>
               </button>
-
-              <button class="btn">Rent now</button>
+              <button
+                onClick={() => data.setCheckout(!data.checkout)}
+                class="btn"
+              >
+                Rent now
+              </button>
             </div>
           </div>
         </div>
-      </li>
+      </>
     </>
   );
 }

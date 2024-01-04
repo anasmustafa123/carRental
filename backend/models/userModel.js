@@ -25,7 +25,7 @@ const createUser = async (user) => {
     name: user.name,
     passportInfo: user.passportInfo,
     address: user.address,
-  }); */
+  }); */ 
   await connectDb.query(
     "INSERT INTO users (name, password, email) VALUES (?, ?, ?)",
     [user["name"], user["password"], user["email"]]

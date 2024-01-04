@@ -36,9 +36,9 @@ export default function Website_Navbar() {
       <div class="header-actions">
 
         <div class="header-contact">
-          <a href="tel:88002345678" class="contact-link">8 800 234 56 78</a>
+          <a href="tel:88002345678" class="contact-link"></a>
 
-          <span class="contact-time">Mon - Sat: 9:00 am - 6:00 pm</span>
+          <span class="contact-time"></span>
         </div>
 
         <a href="#featured-car" class="btn" aria-labelledby="aria-label-txt">

@@ -4,7 +4,7 @@ import {
   getAllReservation,
   getAllReservationOnPeriod,
   getReseravtionOfSingleCustomer,
-  addNewReservation,
+  addNewReservation,  
   removeReservation,
   totalRevenue,
   totalNumOfReservations,
@@ -18,7 +18,8 @@ router.post("/create", addNewReservation);
 router.post("/delete", removeReservation);
 router.post("/totalRevenue", totalRevenue);
 router.post("/totalRevenueOnPeriod", totalRevenueOnPeriod);
-router.post("/totalCount", totalNumOfReservations);
+router.post("/count", totalNumOfReservations);
 
 
 export default router;
+    
