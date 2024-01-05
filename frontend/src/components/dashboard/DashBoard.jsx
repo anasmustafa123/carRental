@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
 import Dashboard_Login from "./Dashboard_Login";
+import { Routes, Route } from "react-router-dom";
 
 export default function DashBoard() {
   //select dashboard
@@ -15,8 +16,16 @@ export default function DashBoard() {
   return (
     <>
       <div className="wrapper">
+        <Routes>
+          <Route
+            Component={
+              <Dashboard_Login setShownPage={setShownPage}></Dashboard_Login>
+            }
+            
+          ></Route>
+        </Routes>
         {shownPage == 5 ? (
-          <Dashboard_Login></Dashboard_Login>
+          <div></div>
         ) : (
           <>
             <Sidebar setShownPage={setShownPage}></Sidebar>

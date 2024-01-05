@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Dashboard_Login() {
+export default function Dashboard_Login(props) {
   return (
     <>
       <div
@@ -24,7 +24,7 @@ export default function Dashboard_Login() {
                 <input
                   type="text"
                   className="form-control"
-                  id="inlineFormInputGroupUsername2"
+                  id="inlineFormInputGroupUsername1"
                   placeholder="Username/Email"
                 />
               </div>
@@ -41,14 +41,14 @@ export default function Dashboard_Login() {
                   placeholder="password"
                 />
               </div>
-              <label className="checkbox pull-left d-flex align-items-center justify-content-around">
+              {/* <label className="checkbox pull-left d-flex align-items-center justify-content-around">
                 Remember me
                 <input
                   type="checkbox"
                   value="remember-me"
                   style={{ width: "fit-content" }}
                 />
-              </label>
+              </label> */}
               <a href="#" className="pull-right need-help">
                 <button
                   className="btn btn-lg btn-danger btn-block"
@@ -60,18 +60,21 @@ export default function Dashboard_Login() {
               <span className="clearfix"></span>
             </form>
           </div>
-          <div className="login-footer">
+          {<div className="login-footer">
             <div className="pull-left">
               <a href="#" className="text-center new-account">
                 Forget Password?
               </a>
             </div>
-            <div className="pull-right">
-              <a href="#" className="text-center new-account">
+            {/* <div className="pull-right">
+              <a
+                href="#"
+                className="text-center new-account"
+              >
                 Get New Account <b>Sign up</b>
               </a>
-            </div>
-          </div>
+            </div> */}
+          </div>}
         </div>
       </div>
     </>
