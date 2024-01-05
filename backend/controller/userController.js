@@ -27,13 +27,13 @@ const authUser = asyncHandler(async (req, res) => {
 // @route POST /api/users
 // @access public
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, passportInfo, address } = req.body;
+  const { name, email, password, passportInfo, address, type } = req.body;
   console.log({ name, email, password, passportInfo, address });
 
   const userExist = await getUser({ email });
   if (userExist) {
     res.status(400);
-    throw new Error(`User already exists`);
+    throw new Error(`User already exists with that email`);
   }
   await createUser({
     name,
@@ -41,6 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
     password,
     passportInfo,
     address,
+    type,
   });
   let user = await getUser({ email });
   if (user) {
@@ -48,6 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       name: user.name,
       email: user.email,
+      type: user.type,
     });
   } else {
     res.status(400);
@@ -111,4 +113,3 @@ const totalNumOfUsers = async (req, res) => {
   res.status(201).json(result[0]);
 };
 export { authUser, registerUser, logoutUser, getUserProfile, totalNumOfUsers };
- 

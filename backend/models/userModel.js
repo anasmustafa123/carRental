@@ -20,15 +20,9 @@ const matchPassword = async (userPassword, enteredPassword) => {
 
 // @desc createUser and customer  with desc
 const createUser = async (user) => {
-  //create new customer
-  /* await createCustomer({
-    name: user.name,
-    passportInfo: user.passportInfo,
-    address: user.address,
-  }); */ 
   await connectDb.query(
-    "INSERT INTO users (name, password, email) VALUES (?, ?, ?)",
-    [user["name"], user["password"], user["email"]]
+    "INSERT INTO users (name, password, email, type) VALUES (?, ?, ?, ?)",
+    [user["name"], user["password"], user["email"], user["type"]]
   );
 };
 
