@@ -9,13 +9,13 @@ import { ToastContainer } from "react-toastify";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <DashProvider>
-        <AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
+        <DashProvider>
           <ToastContainer></ToastContainer>
           <App />
-        </AuthProvider>
-      </DashProvider>
-    </BrowserRouter>
+        </DashProvider>
+      </BrowserRouter>
+    </AuthProvider>
   </React.StrictMode>
 );

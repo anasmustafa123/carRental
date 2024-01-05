@@ -1,12 +1,12 @@
  
-POST http://localhost:5001/api/reservations/all HTTP/1.1
+POST http://localhost:5001/api/users/ HTTP/1.1
 content-type: application/json  
  
-{}
+
 //{"customerId": "1"}
 //{"payment":  "1000", "startDate":"2023-05-10","endDate":"2023-11-05","customerId":"2", "plateId":"ABC123"}
 
-//{"name": "lkjhg", "passportInfo": "jaca", "address": "maharam bek"}
+{"name": "anas", "email": "anasmuostafa3@gmail.com", "password": "5631"}
    
 //{"year": "2023", "month": 3}
 //{"reservationId": 1}

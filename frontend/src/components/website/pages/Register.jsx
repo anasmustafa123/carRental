@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -140,7 +141,7 @@ export default function Register(props) {
                 Forget Password?
               </a>
             </div>
-            <div className="pull-right">
+            <Link className="pull-right" to="/login">
               <a
                 onClick={() => {
                   props.setShownPage(5);
@@ -150,7 +151,7 @@ export default function Register(props) {
               >
                 Already Have Account <b>Sign in</b>
               </a>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
