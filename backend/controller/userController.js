@@ -11,7 +11,7 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await getUser({ email });
   //console.log(user)
   if (user && (await matchPassword(user["password"], password))) {
-    generateToken(res, user["email"]);
+    generateToken(res, user["email"], user.type);
     console.log(req.cookies);
     res.status(201).json({
       name: user.name,
@@ -45,7 +45,7 @@ const registerUser = asyncHandler(async (req, res) => {
   });
   let user = await getUser({ email });
   if (user) {
-    generateToken(res, user.email);
+    generateToken(res, user.email, user.type);
     res.status(201).json({
       name: user.name,
       email: user.email,

@@ -9,13 +9,13 @@ const getSingleReservation = async (req, res) => {
   res.status(201).json({ reservations: result[0] });
 };
 
-// @desc get all reservations
+// @desc get all reservations 
 // POST
 const getAllReservation = async (req, res) => {
-  let [result] = await connectDb.query(`SELECT *
+  let [result] = await connectDb.query(`SELECT customer.customerId, startDate, endDate, cars.plateId, payment
 FROM reservation join customer on customer.customerId = reservation.customerId join cars on cars.plateId = reservation.plateId`);
   res.status(201).json(result);
-};
+}; 
 
 // not working
 // @desc all reservation within specific period

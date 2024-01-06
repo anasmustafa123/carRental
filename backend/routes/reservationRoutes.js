@@ -10,15 +10,17 @@ import {
   totalNumOfReservations,
   totalRevenueOnPeriod
 } from "../controller/reservationController.js";
+import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
-router.post("/all", getAllReservation);
-router.post("/allOnPeriod", getAllReservationOnPeriod);
-router.post("/allOfCustomer", getReseravtionOfSingleCustomer);
-router.post("/create", addNewReservation);
-router.post("/delete", removeReservation);
-router.post("/totalRevenue", totalRevenue);
-router.post("/totalRevenueOnPeriod", totalRevenueOnPeriod);
-router.post("/count", totalNumOfReservations);
+
+router.post("/all",adminOnly, getAllReservation);
+router.post("/allOnPeriod",adminOnly, getAllReservationOnPeriod);
+router.post("/allOfCustomer",adminOnly, getReseravtionOfSingleCustomer);
+router.post("/create", adminOnly, addNewReservation);
+router.post("/delete",adminOnly, removeReservation);
+router.post("/totalRevenue",adminOnly, totalRevenue);
+router.post("/totalRevenueOnPeriod",adminOnly, totalRevenueOnPeriod);
+router.post("/count",adminOnly, totalNumOfReservations);
 
 
 export default router;
