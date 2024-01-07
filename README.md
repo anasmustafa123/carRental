@@ -13,3 +13,7 @@
     using jsonwebtoken library <a></a>
 - saving the token in html only cookie
     using the middleware cookieParser
+
+## Hosting
+- <a href="https://console.clever-cloud.com/">clever-cloud</a> for mysql database
+- 

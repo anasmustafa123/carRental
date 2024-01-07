@@ -1,14 +1,14 @@
 import mysql from "mysql2";
-//console.log(process.env);
-const connectDb = mysql
-  .createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: "",
-    database: "carRental",
-  })
-  .promise();
-/* let [res]= await connectDb.query("SELECT * FROM cars");
-console.log(res); */
+import dotenv from "dotenv";
 
-export default connectDb;
+console.log(process.env.MYSQL_USER);
+dotenv.config();
+const connectDb = mysql.createPool({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
+  connectionLimit: 10,
+});
+ 
+export default connectDb.promise();

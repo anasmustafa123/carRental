@@ -9,9 +9,12 @@ import carsRoutes from "./routes/carRoutes.js";
 import reservationRoutes from "./routes/reservationRoutes.js";
 import officeRoutes from "./routes/officeRoutes.js";
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
-import cors from "cors"; //adding the .env const to process.env
+import cors from "cors"; 
+//adding the .env const to process.env
 dotenv.config();
 
+console.log(process.env)
+console.log(process.env.MYSQL_PASSWORD)
 let port = process.env.PORT || 5200;
 const app = express();
 
@@ -19,9 +22,9 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-//
-app.use(
-  cors({
+// 
+app.use(  
+  cors({ 
     origin: "http://localhost:5173",
     credentials: true,
   })
@@ -38,7 +41,7 @@ app.use("/api/customers", customerRoutes);
 app.use("/api/cars", carsRoutes);
 app.use("/api/reservations", reservationRoutes);
 app.use("/api/offices", officeRoutes);
-
+ 
 app.use(notFound);
 app.use(errorHandler);
 

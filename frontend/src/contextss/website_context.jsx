@@ -23,6 +23,19 @@ const WebsiteProvider = ({ children }) => {
     let result9 = await res9.json();
     return result9;
   };
+  const getOfficeIdFromLocation = async (officeLocation) => {
+    let res9 = await fetch("http://localhost:5001/api/offices/getId", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        location: officeLocation,
+      }),
+    });
+    let result9 = await res9.json();
+    return result9;
+  };
+
   const removingCookie = async () => {
     let res9 = await fetch("http://localhost:5001/api/users/logout", {
       method: "POST",
@@ -70,6 +83,7 @@ const WebsiteProvider = ({ children }) => {
         removingCookie,
         setOfficesLocations,
         getCarsFun,
+        getOfficeIdFromLocation,
         officesLocations,
       }}
     >

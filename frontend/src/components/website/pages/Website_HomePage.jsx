@@ -4,7 +4,8 @@ import { useContext, useState } from "react";
 import { websiteContext } from "../../../contextss/website_context";
 export default function Website_HomePage(props) {
   //const { getCarsFun, officesLocations } = useContext(dashContext);
-  const { getCarsFun, officesLocations } = useContext(websiteContext);
+  const { getCarsFun, officesLocations, getOfficeIdFromLocation } =
+    useContext(websiteContext);
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -16,8 +17,10 @@ export default function Website_HomePage(props) {
   const handleEndDateChange = (event) => {
     setEndDate(event.target.value);
   };
-  const handleLocationChange = (event) => {
+  const handleLocationChange = async (event) => {
     setSelectedLocation(event.target.value);
+    let res = await getOfficeIdFromLocation(event.target.value);
+    setOfficeId(res.officeId);
   };
   return (
     <>
@@ -41,13 +44,15 @@ export default function Website_HomePage(props) {
                 name="officeId"
                 id="cars"
                 value={selectedLocation}
-                onChange={handleLocationChange}
+                onChange={(e) => {
+                  handleLocationChange(e);
+                }}
               >
                 <option value="" disabled>
                   Select location
                 </option>
                 {officesLocations.map((location, key) => (
-                  <option key={key} value="volvo">
+                  <option key={key} value={location.location}>
                     {location.location}
                   </option>
                 ))}

@@ -1,12 +1,12 @@
  
-POST http://localhost:5001/api/users/auth  HTTP/1.1
+POST http://localhost:5001/api/users/  HTTP/1.1 
 content-type: application/json  
- 
-//{} 
+    
+//{"location": "Suburb Office"} 
 //{"customerId": "1"}
 //{"payment":  "1000", "startDate":"2023-05-10","endDate":"2023-11-05","customerId":"2", "plateId":"ABC123"}
-//{"name": "new", "email":"new", "password":"new", "passportInfo":"new", "address":"new", "type":"admin"}
-{ "email": "anasmuostafa@gmail.com", "password": "5631"}
+{"name": "new", "email":"new", "password":"new", "passportInfo":"new", "address":"new", "type":"admin"}
+//{ "email": "anasmuostafa@gmail.com", "password": "5631"}
    
 //{"year": "2023", "month": 3}
 //{"reservationId": 1}
