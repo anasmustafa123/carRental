@@ -15,7 +15,7 @@ import { protect, adminOnly } from "../middleware/authMiddleware.js";
 
 router.post("/all",adminOnly, getAllReservation);
 router.post("/allOnPeriod",adminOnly, getAllReservationOnPeriod);
-router.post("/allOfCustomer",adminOnly, getReseravtionOfSingleCustomer);
+router.post("/allOfCustomer",protect, getReseravtionOfSingleCustomer);
 router.post("/create", adminOnly, addNewReservation);
 router.post("/delete",adminOnly, removeReservation);
 router.post("/totalRevenue",adminOnly, totalRevenue);

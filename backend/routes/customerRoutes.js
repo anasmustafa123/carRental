@@ -6,10 +6,11 @@ import {
   totalNumOfCustomers,
   getAllCustomers,
 } from "../controller/customerController.js";
+import { adminOnly, protect } from "../middleware/authMiddleware.js";
 
-router.post("/all", getAllCustomers);
-router.post("/create", createCustomer);
-router.post("/delete", removeCustomer);
-router.post("/count", totalNumOfCustomers);
+router.post("/all", adminOnly, getAllCustomers);
+router.post("/create", protect, createCustomer);
+router.post("/delete", protect, removeCustomer);
+router.post("/count", adminOnly, totalNumOfCustomers);
 
 export default router;
