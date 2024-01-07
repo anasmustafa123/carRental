@@ -6,11 +6,11 @@ const getAvalibleCars = async (req, res) => {
   let specs = req.body;
   let [result] = await connectDb.query(
     `
-    SELECT cars.model, cars.carStatus, cars.plateId, cars.year, cars.color, cars.seatAmount, cars.image_url
+    SELECT cars.model, cars.carStatus, cars.plateId, cars.year, cars.color, cars.seatAmount, cars.image_url, cars.dailyPrice
         from cars 
         where cars.carStatus = 'A' AND cars.officeId = ?
         union
-        SELECT cars.model, cars.carStatus, cars.plateId, cars.year, cars.color, cars.seatAmount, cars.image_url
+        SELECT cars.model, cars.carStatus, cars.plateId, cars.year, cars.color, cars.seatAmount, cars.image_url, cars.dailyPrice
         FROM reservation
         RIGHT JOIN cars ON reservation.plateId = cars.plateId
         WHERE cars.officeId = ? AND (reservation.startDate < ?

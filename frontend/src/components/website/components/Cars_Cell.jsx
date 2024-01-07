@@ -57,7 +57,7 @@ export default function Cars_Cell(data) {
 
             <div class="card-price-wrapper">
               <p class="card-price">
-                <strong>$440</strong> / month
+                <strong>${data.dailyPrice}</strong> / daily
               </p>
               <button class="btn fav-btn" aria-label="Add to favourite list">
                 <ion-icon name="heart-outline"></ion-icon>

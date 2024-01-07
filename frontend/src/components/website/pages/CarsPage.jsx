@@ -7,7 +7,9 @@ export default function CarsPage(props) {
 
   return (
     <>
-      {checkout && <Checkout setCheckout={setCheckout} checkout={checkout}></Checkout>}
+      {checkout && (
+        <Checkout setCheckout={setCheckout} checkout={checkout}></Checkout>
+      )}
       {!checkout && (
         <section class="section featured-car" id="featured-car">
           <div class="container">
@@ -34,6 +36,7 @@ export default function CarsPage(props) {
                     image_url={car.image_url}
                     carStatus={car.carStatus}
                     plateId={car.plateId}
+                    dailyPrice={car.dailyPrice}
                   ></Cars_Cell>
                 </li>
               ))}
