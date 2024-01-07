@@ -11,6 +11,7 @@ const authUser = asyncHandler(async (req, res) => {
   const user = await getUser({ email });
   //console.log(user)
   if (user && (await matchPassword(user["password"], password))) {
+    console.log("password matched")
     generateToken(res, user["email"], user.type);
     console.log(req.cookies);
     res.status(201).json({
@@ -61,6 +62,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/logout
 // @access public
 const logoutUser = asyncHandler(async (req, res) => {
+  console.log('logging out')
   res.cookie("jwt", "", {
     httpOnly: true,
     expires: new Date(0),

@@ -6,7 +6,6 @@ import PrivateAdminRoutes from "./routes/PrivateAdminRoutes";
 import PrivateCustomerRoutes from "./routes/PrivateCustomerRoutes";
 import Login from "./components/website/pages/Login";
 import { Route, Routes } from "react-router-dom";
-
 function App() {
   return (
     <>

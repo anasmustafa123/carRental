@@ -1,10 +1,81 @@
 import React from "react";
 import { createContext } from "react";
+import { useState, useEffect } from "react";
+import { useAuth } from "./AuthContext";
+const websiteContext = createContext("user");
 
-const userContext = createContext();
+const WebsiteProvider = ({ children }) => {
+  const [officesLocations, setOfficesLocations] = useState([]);
 
-const UserProvider = ({ children }) => {
-  return <userContext.Provider value={{ x: 6 }}>{children}</userContext.Provider>;
+  const { isCustomerLoggedIn } = useAuth();
+
+  const getCarsFun = async (officeId, sDate, eDate) => {
+    let res9 = await fetch("http://localhost:5001/api/cars/getAvalible", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        officeId: officeId,
+        startDate: sDate,
+        endDate: eDate,
+      }),
+    });
+    let result9 = await res9.json();
+    return result9;
+  };
+  const removingCookie = async () => {
+    let res9 = await fetch("http://localhost:5001/api/users/logout", {
+      method: "POST",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({}),
+    });
+    let result9 = await res9.json();
+    return result9;
+  };
+  //initializing reservation data
+  useEffect(() => {
+    const fetching = async () => {
+      let res2 = await fetch("http://localhost:5001/api/offices/allLocations", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      let result2 = await res2.json();
+      console.log({ result2 });
+      setOfficesLocations(result2);
+    };
+    fetching();
+  }, []);
+  //initializing reservation data
+  useEffect(() => {
+    const fetching = async () => {
+      let res2 = await fetch("http://localhost:5001/api/offices/allLocations", {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      let result2 = await res2.json();
+      console.log({ result2 });
+      setOfficesLocations(result2);
+    };
+    fetching();
+  }, [isCustomerLoggedIn]);
+
+  return (
+    <websiteContext.Provider
+      value={{
+        removingCookie,
+        setOfficesLocations,
+        getCarsFun,
+        officesLocations,
+      }}
+    >
+      {children}
+    </websiteContext.Provider>
+  );
 };
 
-export { userContext, UserProvider };
+export { websiteContext, WebsiteProvider };

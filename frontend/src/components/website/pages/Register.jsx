@@ -24,6 +24,7 @@ export default function Register(props) {
     try {
       const result = await fetch("http://localhost:5001/api/users/", {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

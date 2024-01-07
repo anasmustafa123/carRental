@@ -1,9 +1,11 @@
 import React from "react";
 import { useContext, useState } from "react";
-import { dashContext } from "../../../contextss/dashboard_context";
-
+//import { dashContext } from "../../../contextss/dashboard_context";
+import { websiteContext } from "../../../contextss/website_context";
 export default function Website_HomePage(props) {
-  const { getCarsFun, officesLocations } = useContext(dashContext);
+  //const { getCarsFun, officesLocations } = useContext(dashContext);
+  const { getCarsFun, officesLocations } = useContext(websiteContext);
+
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");

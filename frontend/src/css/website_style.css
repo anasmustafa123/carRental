@@ -285,6 +285,12 @@ a {
   --shadow-2: var(--shadow-1);
   box-shadow: var(--shadow-1);
 }
+.user-btn.logout {
+  --color: var(--white);
+  --background: var(--red-salsa);
+  --shadow-2: var(--shadow-1);
+  box-shadow: var(--shadow-1);
+}
 
 .nav-toggle-btn span {
   background: var(--independence);

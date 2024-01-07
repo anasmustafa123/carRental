@@ -8,9 +8,9 @@ import {
   totalNumOfCars,
   getAll,
 } from "../controller/carController.js";
-import { adminOnly } from "../middleware/authMiddleware.js";
+import { adminOnly, protect } from "../middleware/authMiddleware.js";
 
-router.post("/getAvalible", getAvalibleCars);
+router.post("/getAvalible", protect, getAvalibleCars);
 router.post("/allToday", adminOnly, getAllCarsStatusOnDay);
 router.post("/create", adminOnly, addNewCar);
 router.post("/delete", adminOnly, removeCar);
