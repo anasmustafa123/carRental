@@ -22,7 +22,7 @@ export default function Register(props) {
     e.preventDefault();
     // Do something with the captured input values (e.g., send them to the server)
     try {
-      const result = await fetch("http://localhost:5001/api/users/", {
+      const result = await fetch("https://ren-a-car.onrender.com/api/users/", {
         method: "POST",
         credentials: "include",
         headers: {
