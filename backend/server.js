@@ -26,7 +26,7 @@ app.use(cookieParser());
 //
 app.use(
   cors({
-    origin: "https://vercel.com/anasmustafas-projects/car-rental",
+    origin: "https://car-rental-1nfnpj7p1-anasmustafas-projects.vercel.app/",
     credentials: true,
   })
 );
