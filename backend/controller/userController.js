@@ -9,7 +9,7 @@ import connectDb from "../config/db.js";
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await getUser({ email });
-  //console.log(user)
+  console.log(user)
   if (user && (await matchPassword(user["password"], password))) {
     console.log("password matched")
     generateToken(res, user["email"], user.type);
@@ -23,6 +23,29 @@ const authUser = asyncHandler(async (req, res) => {
     throw new Error(`invalid email or password`);
   }
 });
+
+
+// @desc  Authorize admin/set token
+// @route POST /api/users/auth
+// @access public
+const authAdmin = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+  const user = await getUser({ email });
+  //console.log(user)
+  if (user && (await matchPassword(user["password"], password)) && user.type == 'admin') {
+    console.log("password matched")
+    generateToken(res, user["email"], user.type);
+    console.log(req.cookies);
+    res.status(201).json({
+      name: user.name,
+      email: user.email,
+    });
+  } else {
+    res.status(401);
+    throw new Error(`invalid email or password`);
+  }
+});
+
 
 // @desc  Register user new user
 // @route POST /api/users
@@ -114,4 +137,4 @@ const totalNumOfUsers = async (req, res) => {
   console.log({ result });
   res.status(201).json(result[0]);
 };
-export { authUser, registerUser, logoutUser, getUserProfile, totalNumOfUsers };
+export { authUser,authAdmin, registerUser, logoutUser, getUserProfile, totalNumOfUsers };
