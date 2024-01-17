@@ -10,7 +10,7 @@ const WebsiteProvider = ({ children }) => {
   const { isCustomerLoggedIn } = useAuth();
 
   const getCarsFun = async (officeId, sDate, eDate) => {
-    let res9 = await fetch("https://ren-a-car.onrender.com/api/cars/getAvalible", {
+    let res9 = await fetch("http://localhost:5001/api/cars/getAvalible", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -24,7 +24,7 @@ const WebsiteProvider = ({ children }) => {
     return result9;
   };
   const getOfficeIdFromLocation = async (officeLocation) => {
-    let res9 = await fetch("https://ren-a-car.onrender.com/api/offices/getId", {
+    let res9 = await fetch("http://localhost:5001/api/offices/getId", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -37,7 +37,7 @@ const WebsiteProvider = ({ children }) => {
   };
 
   const removingCookie = async () => {
-    let res9 = await fetch("https://ren-a-car.onrender.com/api/users/logout", {
+    let res9 = await fetch("http://localhost:5001/api/users/logout", {
       method: "POST",
       credentials: "include",
       headers: { "Content-Type": "application/json" },
@@ -49,7 +49,7 @@ const WebsiteProvider = ({ children }) => {
   //initializing reservation data
   useEffect(() => {
     const fetching = async () => {
-      let res2 = await fetch("https://ren-a-car.onrender.com/api/offices/allLocations", {
+      let res2 = await fetch("http://localhost:5001/api/offices/allLocations", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },
@@ -64,7 +64,7 @@ const WebsiteProvider = ({ children }) => {
   //initializing reservation data
   useEffect(() => {
     const fetching = async () => {
-      let res2 = await fetch("https://ren-a-car.onrender.com/api/offices/allLocations", {
+      let res2 = await fetch("http://localhost:5001/api/offices/allLocations", {
         method: "POST",
         credentials: "include",
         headers: { "Content-Type": "application/json" },

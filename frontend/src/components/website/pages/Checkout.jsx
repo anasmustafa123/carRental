@@ -24,7 +24,7 @@ const Checkout = (props) => {
 
     try {
       const response = await fetch(
-        "https://ren-a-car.onrender.com/api/customers/create",
+        "http://localhost:5001/api/customers/create",
         {
           method: "POST",
           headers: {
