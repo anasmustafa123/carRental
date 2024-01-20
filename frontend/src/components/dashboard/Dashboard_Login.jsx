@@ -21,7 +21,7 @@ export default function Dashboard_Login(props) {
     e.preventDefault();
     try {
       const result = await fetch(
-        "https://ren-a-car.onrender.com/api/users/adminAuth",
+        "https://ren-a-car.onrender.com/api/users/authAdmin",
         {
           method: "POST",
           credentials: "include",
