@@ -26,7 +26,7 @@ app.use(cookieParser());
 //
 app.use(
   cors({
-    origin: "https://rent-a-car-website.onrender.com/",
+    origin: "https://rent-a-car-website.onrender.com",
     credentials: true,
   })
 );
