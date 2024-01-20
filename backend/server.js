@@ -26,7 +26,7 @@ app.use(cookieParser());
 //
 app.use(
   cors({
-    origin: "http://localhost:5001",
+    origin: "https://rent-a-car-website.onrender.com/",
     credentials: true,
   })
 );
@@ -40,11 +40,11 @@ app.use("/api/reservations", reservationRoutes);
 app.use("/api/offices", officeRoutes);
 
 if (process.env.NODE_ENV == "production") {
-  //const __dirname = path.resolve();
-  //app.use(express.static(path.join(__dirname, "frontend/dist")));
-  app.use(express.static(path.join("./", "frontend/dist")));
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "frontend/dist")));
+
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve("./", "frontend", "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
   });
 }
 app.get("/", (req, res) => {
