@@ -9,9 +9,9 @@ import connectDb from "../config/db.js";
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await getUser({ email });
-  console.log(user)
+  console.log(user);
   if (user && (await matchPassword(user["password"], password))) {
-    console.log("password matched")
+    console.log("password matched");
     generateToken(res, user["email"], user.type);
     console.log(req.cookies);
     res.status(201).json({
@@ -23,7 +23,6 @@ const authUser = asyncHandler(async (req, res) => {
     throw new Error(`invalid email or password`);
   }
 });
-
 
 // @desc  Authorize admin/set token
 // @route POST /api/users/auth
@@ -32,8 +31,12 @@ const authAdmin = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await getUser({ email });
   //console.log(user)
-  if (user && (await matchPassword(user["password"], password)) && user.type == 'admin') {
-    console.log("password matched")
+  if (
+    user &&
+    (await matchPassword(user["password"], password)) &&
+    user.type == "admin"
+  ) {
+    console.log("password matched");
     generateToken(res, user["email"], user.type);
     console.log(req.cookies);
     res.status(201).json({
@@ -45,7 +48,6 @@ const authAdmin = asyncHandler(async (req, res) => {
     throw new Error(`invalid email or password`);
   }
 });
-
 
 // @desc  Register user new user
 // @route POST /api/users
@@ -85,7 +87,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/logout
 // @access public
 const logoutUser = asyncHandler(async (req, res) => {
-  console.log('logging out')
+  console.log("logging out");
   res.cookie("jwt", "", {
     httpOnly: true,
     expires: new Date(0),
@@ -137,4 +139,11 @@ const totalNumOfUsers = async (req, res) => {
   console.log({ result });
   res.status(201).json(result[0]);
 };
-export { authUser,authAdmin, registerUser, logoutUser, getUserProfile, totalNumOfUsers };
+export {
+  authUser,
+  authAdmin,
+  registerUser,
+  logoutUser,
+  getUserProfile,
+  totalNumOfUsers,
+};

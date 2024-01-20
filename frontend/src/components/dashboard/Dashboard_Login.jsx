@@ -47,7 +47,7 @@ export default function Dashboard_Login(props) {
       toast.success("User Login Successfully");
       adminLogin();
       setTimeout(() => {
-        navigate("/");
+        navigate("/admin");
       }, 1000);
     } catch (e) {
       toast.error(e.message);
