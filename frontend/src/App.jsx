@@ -10,15 +10,21 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />} />
-        <Route path="/admin/login" element={<Dashboard_Login />}></Route>
         <Route element={<PrivateAdminRoutes />}>
           <Route element={<DashBoard />} path="/admin" exact></Route>
         </Route>
         <Route element={<PrivateCustomerRoutes />}>
+          <Route path="/login">
+            <Navigate to="/" />
+          </Route>
+          <Route path="/register">
+            <Navigate to="/" />
+          </Route>
           <Route path="/" element={<Website></Website>}></Route>
         </Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />} />
+        <Route path="/admin/login" element={<Dashboard_Login />}></Route>
       </Routes>
     </>
   );
