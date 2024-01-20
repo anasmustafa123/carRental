@@ -24,7 +24,7 @@ export default function Login(props) {
   const submitform = async (e) => {
     e.preventDefault();
     try {
-      const result = await fetch("http://localhost:5001/api/users/auth", {
+      const result = await fetch("https://ren-a-car.onrender.com/api/users/auth", {
         method: "POST",
         credentials: 'include',
         headers: {
