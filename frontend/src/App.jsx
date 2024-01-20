@@ -5,7 +5,7 @@ import Dashboard_Login from "./components/dashboard/Dashboard_Login";
 import PrivateAdminRoutes from "./routes/PrivateAdminRoutes";
 import PrivateCustomerRoutes from "./routes/PrivateCustomerRoutes";
 import Login from "./components/website/pages/Login";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 function App() {
   return (
     <>
