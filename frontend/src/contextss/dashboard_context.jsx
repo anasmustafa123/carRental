@@ -20,9 +20,10 @@ const DashProvider = ({ children }) => {
   const [getReservations, setReservations] = useState([]);
 
   const { isCustomerLoggedIn } = useAuth();
-
+  //https://ren-a-car.onrender.com
+  //https://ren-a-car.onrender.com
   const getCarsFun = async (officeId, sDate, eDate) => {
-    let res9 = await fetch("http://localhost:5001/api/cars/getAvalible", {
+    let res9 = await fetch("https://ren-a-car.onrender.com/api/cars/getAvalible", {
       method: "POST",
       credentials: 'include',
       headers: { "Content-Type": "application/json" },
@@ -36,7 +37,7 @@ const DashProvider = ({ children }) => {
     return result9;
   };
   /*   const deleteCustomer = async (customerId) => {
-    let res = await fetch("http://localhost:5001/api/customers/delete", {
+    let res = await fetch("https://ren-a-car.onrender.com/api/customers/delete", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({customerId}),
@@ -48,7 +49,7 @@ const DashProvider = ({ children }) => {
   //initializeing number of cars
   /* useEffect(() => {
     const fetching = async () => {
-      let res10 = await fetch("http://localhost:5001/api/cars/count", {
+      let res10 = await fetch("https://ren-a-car.onrender.com/api/cars/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -62,7 +63,7 @@ const DashProvider = ({ children }) => {
   // initializeing number of customer
   /*  useEffect(() => {
     const fetching = async () => {
-      let res11 = await fetch("http://localhost:5001/api/customers/count", {
+      let res11 = await fetch("https://ren-a-car.onrender.com/api/customers/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -76,7 +77,7 @@ const DashProvider = ({ children }) => {
   // initializeing number of reseravations
   /* useEffect(() => {
     const fetching = async () => {
-      let res12 = await fetch("http://localhost:5001/api/reservations/count", {
+      let res12 = await fetch("https://ren-a-car.onrender.com/api/reservations/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -90,7 +91,7 @@ const DashProvider = ({ children }) => {
   // initializeing number of offices
   /*   useEffect(() => {
     const fetching = async () => {
-      let res8 = await fetch("http://localhost:5001/api/offices/count", {
+      let res8 = await fetch("https://ren-a-car.onrender.com/api/offices/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -105,7 +106,7 @@ const DashProvider = ({ children }) => {
   // initializeing number of users
   /*   useEffect(() => {
     const fetching = async () => {
-      let res7 = await fetch("http://localhost:5001/api/users/count", {
+      let res7 = await fetch("https://ren-a-car.onrender.com/api/users/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -121,7 +122,7 @@ const DashProvider = ({ children }) => {
   /*   useEffect(() => {
     const fetching = async () => {
       let res6 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenue",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenue",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -139,7 +140,7 @@ const DashProvider = ({ children }) => {
   /*   useEffect(() => {
     const fetching = async () => {
       let res5 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenueOnPeriod",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -162,7 +163,7 @@ const DashProvider = ({ children }) => {
       let thismonth = new Date().getMonth() + 1;
       console.log({ thismonth });
       let res13 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenueOnPeriod",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -181,7 +182,7 @@ const DashProvider = ({ children }) => {
   //initializing this customers data
   /*   useEffect(() => {
     const fetching = async () => {
-      let res4 = await fetch("http://localhost:5001/api/customers/all", {
+      let res4 = await fetch("https://ren-a-car.onrender.com/api/customers/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -195,7 +196,7 @@ const DashProvider = ({ children }) => {
   //initializing this cars data
   /*   useEffect(() => {
     const fetching = async () => {
-      let res3 = await fetch("http://localhost:5001/api/cars/all", {
+      let res3 = await fetch("https://ren-a-car.onrender.com/api/cars/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -209,7 +210,7 @@ const DashProvider = ({ children }) => {
   //initializing reservation data
   useEffect(() => {
     const fetching = async () => {
-      /* let res = await fetch("http://localhost:5001/api/reservations/all", {
+      /* let res = await fetch("https://ren-a-car.onrender.com/api/reservations/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -217,7 +218,7 @@ const DashProvider = ({ children }) => {
       let result = await res.json();
       console.log({ result });
       setReservations(result);
-      let res2 = await fetch("http://localhost:5001/api/offices/allLocations", {
+      let res2 = await fetch("https://ren-a-car.onrender.com/api/offices/allLocations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -225,7 +226,7 @@ const DashProvider = ({ children }) => {
       let result2 = await res2.json();
       console.log({ result2 });
       setOfficesLocations(result2);
-      let res3 = await fetch("http://localhost:5001/api/cars/all", {
+      let res3 = await fetch("https://ren-a-car.onrender.com/api/cars/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -233,7 +234,7 @@ const DashProvider = ({ children }) => {
       let result3 = await res3.json();
       console.log(result3);
       setCars(result3);
-      let res4 = await fetch("http://localhost:5001/api/customers/all", {
+      let res4 = await fetch("https://ren-a-car.onrender.com/api/customers/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -242,7 +243,7 @@ const DashProvider = ({ children }) => {
       console.log(result4);
       setCustomers(result4);
       let res5 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenueOnPeriod",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -257,7 +258,7 @@ const DashProvider = ({ children }) => {
       console.log({ shit: result5.totalRevenu });
       setYearRevenue(result5.totalRevenue);
       let res6 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenue",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenue",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -267,7 +268,7 @@ const DashProvider = ({ children }) => {
       let result6 = await res6.json();
       console.log(result6.totalRevenue);
       setTotalRevenu(result6.totalRevenue);
-      let res7 = await fetch("http://localhost:5001/api/users/count", {
+      let res7 = await fetch("https://ren-a-car.onrender.com/api/users/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -275,7 +276,7 @@ const DashProvider = ({ children }) => {
       let result7 = await res7.json();
       console.log(result7.users_num);
       setUsersCount(result7.users_num);
-      let res8 = await fetch("http://localhost:5001/api/offices/count", {
+      let res8 = await fetch("https://ren-a-car.onrender.com/api/offices/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -283,7 +284,7 @@ const DashProvider = ({ children }) => {
       let result8 = await res8.json();
       console.log(result8.offices_num);
       setOfficesCount(result8.offices_num);
-      let res10 = await fetch("http://localhost:5001/api/cars/count", {
+      let res10 = await fetch("https://ren-a-car.onrender.com/api/cars/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -291,7 +292,7 @@ const DashProvider = ({ children }) => {
       let result10 = await res10.json();
       console.log(result10.cars_num);
       setCarsCount(result10.cars_num);
-      let res11 = await fetch("http://localhost:5001/api/customers/count", {
+      let res11 = await fetch("https://ren-a-car.onrender.com/api/customers/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -299,7 +300,7 @@ const DashProvider = ({ children }) => {
       let result11 = await res11.json();
       console.log(result11.customers_num);
       setCustomersCount(result11.customers_num);
-      let res12 = await fetch("http://localhost:5001/api/reservations/count", {
+      let res12 = await fetch("https://ren-a-car.onrender.com/api/reservations/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -311,7 +312,7 @@ const DashProvider = ({ children }) => {
       let thismonth = new Date().getMonth() + 1;
       console.log({ thismonth });
       let res13 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenueOnPeriod",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -329,7 +330,7 @@ const DashProvider = ({ children }) => {
   }, []);
 /*   useEffect(() => {
     const fetching = async () => {
-      let res = await fetch("http://localhost:5001/api/reservations/all", {
+      let res = await fetch("https://ren-a-car.onrender.com/api/reservations/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -337,7 +338,7 @@ const DashProvider = ({ children }) => {
       let result = await res.json();
       console.log({ result });
       setReservations(result);
-      let res2 = await fetch("http://localhost:5001/api/offices/allLocations", {
+      let res2 = await fetch("https://ren-a-car.onrender.com/api/offices/allLocations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -345,7 +346,7 @@ const DashProvider = ({ children }) => {
       let result2 = await res2.json();
       console.log({ result2 });
       setOfficesLocations(result2);
-      let res3 = await fetch("http://localhost:5001/api/cars/all", {
+      let res3 = await fetch("https://ren-a-car.onrender.com/api/cars/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -353,7 +354,7 @@ const DashProvider = ({ children }) => {
       let result3 = await res3.json();
       console.log(result3);
       setCars(result3);
-      let res4 = await fetch("http://localhost:5001/api/customers/all", {
+      let res4 = await fetch("https://ren-a-car.onrender.com/api/customers/all", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -362,7 +363,7 @@ const DashProvider = ({ children }) => {
       console.log(result4);
       setCustomers(result4);
       let res5 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenueOnPeriod",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -377,7 +378,7 @@ const DashProvider = ({ children }) => {
       console.log({ shit: result5.totalRevenu });
       setYearRevenue(result5.totalRevenue);
       let res6 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenue",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenue",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -387,7 +388,7 @@ const DashProvider = ({ children }) => {
       let result6 = await res6.json();
       console.log(result6.totalRevenue);
       setTotalRevenu(result6.totalRevenue);
-      let res7 = await fetch("http://localhost:5001/api/users/count", {
+      let res7 = await fetch("https://ren-a-car.onrender.com/api/users/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -395,7 +396,7 @@ const DashProvider = ({ children }) => {
       let result7 = await res7.json();
       console.log(result7.users_num);
       setUsersCount(result7.users_num);
-      let res8 = await fetch("http://localhost:5001/api/offices/count", {
+      let res8 = await fetch("https://ren-a-car.onrender.com/api/offices/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -403,7 +404,7 @@ const DashProvider = ({ children }) => {
       let result8 = await res8.json();
       console.log(result8.offices_num);
       setOfficesCount(result8.offices_num);
-      let res10 = await fetch("http://localhost:5001/api/cars/count", {
+      let res10 = await fetch("https://ren-a-car.onrender.com/api/cars/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -411,7 +412,7 @@ const DashProvider = ({ children }) => {
       let result10 = await res10.json();
       console.log(result10.cars_num);
       setCarsCount(result10.cars_num);
-      let res11 = await fetch("http://localhost:5001/api/customers/count", {
+      let res11 = await fetch("https://ren-a-car.onrender.com/api/customers/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -419,7 +420,7 @@ const DashProvider = ({ children }) => {
       let result11 = await res11.json();
       console.log(result11.customers_num);
       setCustomersCount(result11.customers_num);
-      let res12 = await fetch("http://localhost:5001/api/reservations/count", {
+      let res12 = await fetch("https://ren-a-car.onrender.com/api/reservations/count", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
@@ -431,7 +432,7 @@ const DashProvider = ({ children }) => {
       let thismonth = new Date().getMonth() + 1;
       console.log({ thismonth });
       let res13 = await fetch(
-        "http://localhost:5001/api/reservations/totalRevenueOnPeriod",
+        "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
