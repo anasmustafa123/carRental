@@ -18,7 +18,7 @@ export default function Dashboard_Login(props) {
     }));
   };
   const submitForm = async (e) => {
-    e.previntDefault();
+    e.preventDefault();
     try {
       const result = await fetch(
         "https://ren-a-car.onrender.com/api/users/adminAuth",
