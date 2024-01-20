@@ -12,6 +12,7 @@ const getUser = async ({ email }) => {
   return result[0];
 };
 
+
 // @desc matching password
 const matchPassword = async (userPassword, enteredPassword) => {
   //console.log({userPassword, enteredPassword})

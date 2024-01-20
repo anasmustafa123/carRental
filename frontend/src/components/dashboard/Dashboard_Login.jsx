@@ -1,7 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useState } from "react-router-dom";
 import { useAuth } from "../../contextss/AuthContext";
 export default function Dashboard_Login(props) {
   let navigate = useNavigate();
@@ -20,17 +20,20 @@ export default function Dashboard_Login(props) {
   const submitForm = async (e) => {
     e.previntDefault();
     try {
-      const result = await fetch("https://ren-a-car.onrender.com/api/users/adminAuth", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+      const result = await fetch(
+        "https://ren-a-car.onrender.com/api/users/adminAuth",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
       let res = await result.json();
       console.log({ res });
       if (!result.ok) {
