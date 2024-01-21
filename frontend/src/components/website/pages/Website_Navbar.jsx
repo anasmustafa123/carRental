@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useAuth } from "../../../contextss/AuthContext";
-import { websiteContext } from "../../../contextss/website_context";
 
 export default function Website_Navbar() {
   const { isCustomerLoggedIn, customerLogout } = useAuth();
-  const { removingCookie } = useContext(websiteContext);
   return (
     <>
       <header class="header" data-header>
@@ -69,8 +67,7 @@ export default function Website_Navbar() {
               <>
                 <a
                   onClick={async () => {
-                    await removingCookie();
-                    customerLogout();
+                    await customerLogout();
                   }}
                   href="#"
                   class="btn user-btn logout"

@@ -1,6 +1,8 @@
 import React from "react";
-
+import { useAuth } from "../../contextss/AuthContext";
+import { useNavigate } from "react-router-dom";
 export default function () {
+  const { adminLogout } = useAuth();
   return (
     <>
       <nav
@@ -57,63 +59,19 @@ export default function () {
                   aria-expanded="false"
                 >
                   <i className="material-icons">notifications</i>
-                  <span className="notification">5</span>
-                  <p className="d-lg-none d-md-block">Some Actions</p>
+                  <span className="notification">5</span>{" "}
                 </a>
-                <div
-                  className="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="navbarDropdownMenuLink"
-                >
-                  <a className="dropdown-item" href="#">
-                    Mike John responded to your email
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    You have 5 new tasks
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    You're now friend with Andrew
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Another Notification
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Another One
-                  </a>
-                </div>
               </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link"
-                  href="javascript:;"
-                  id="navbarDropdownProfile"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i className="material-icons">person</i>
-                  <p className="d-lg-none d-md-block">Account</p>
-                  <span className="hide-arrow-admin-text">
-                    Admin
-                    <i className="material-icons">arrow_drop_down</i>
-                  </span>
-                </a>
-
-                <div
-                  className="dropdown-menu dropdown-menu-right"
-                  aria-labelledby="navbarDropdownProfile"
-                >
-                  <a className="dropdown-item" href="user-profile.html">
-                    Profile
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Settings
-                  </a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
-                    Log out
-                  </a>
-                </div>
-              </li>
+              <span
+                style={{ color: "red", cursor: "pointer" }}
+                class="material-symbols-outlined"
+                onClick={async () => {
+                  await adminLogout();
+                  //navigate("/admin/login");
+                }}
+              >
+                logout
+              </span>
             </ul>
           </div>
         </div>
