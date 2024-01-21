@@ -22,19 +22,24 @@ export default function Register(props) {
     e.preventDefault();
     // Do something with the captured input values (e.g., send them to the server)
     try {
-      const result = await fetch("https://ren-a-car.onrender.com/api/users/", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          password: formData.password,
-          type: "customer",
-        }),
-      });
+      const result = await fetch(
+        import.meta.env.VITE_NODE_ENV == "development"
+          ? `http://localhost:${import.meta.env.VITE_PORT}/api/users/`
+          : "https://ren-a-car.onrender.com/api/users/",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password,
+            type: "customer",
+          }),
+        }
+      );
       console.log({ result });
       let res = await result.json();
       console.log({ res });

@@ -10,51 +10,89 @@ const WebsiteProvider = ({ children }) => {
   const { isCustomerLoggedIn } = useAuth();
 
   const getCarsFun = async (officeId, sDate, eDate) => {
-    let res9 = await fetch("https://ren-a-car.onrender.com/api/cars/getAvalible", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        officeId: officeId,
-        startDate: sDate,
-        endDate: eDate,
-      }),
+    console.log({
+      port: import.meta.env.VITE_PORT,
+      url: `http://localhost:${import.meta.env.VITE_PORT}`,
     });
+    let res9 = await fetch(
+      import.meta.env.VITE_NODE_ENV === "development"
+        ? `http://localhost:${import.meta.env.VITE_PORT}/api/cars/getAvalible`
+        : "https:/ren-a-car.onrender.com/api/cars/getAvalible",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          officeId: officeId,
+          startDate: sDate,
+          endDate: eDate,
+        }),
+      }
+    );
     let result9 = await res9.json();
     return result9;
   };
   const getOfficeIdFromLocation = async (officeLocation) => {
-    let res9 = await fetch("https://ren-a-car.onrender.com/api/offices/getId", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        location: officeLocation,
-      }),
+    console.log({
+      port: import.meta.env.VITE_PORT,
+      url: `http://localhost:${import.meta.env.VITE_PORT}`,
     });
+    let res9 = await fetch(
+      import.meta.env.VITE_NODE_ENV == "development"
+        ? `http://localhost:${import.meta.env.VITE_PORT}/api/offices/getId`
+        : "https:/ren-a-car.onrender.com/api/offices/getId",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          location: officeLocation,
+        }),
+      }
+    );
     let result9 = await res9.json();
     return result9;
   };
 
   const removingCookie = async () => {
-    let res9 = await fetch("https://ren-a-car.onrender.com/api/users/logout", {
-      method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({}),
+    console.log({
+      port: import.meta.env.VITE_PORT,
+      url: `http://localhost:${import.meta.env.VITE_PORT}`,
     });
+    let res9 = await fetch(
+      import.meta.env.VITE_NODE_ENV == "development"
+        ? `http://localhost:${import.meta.env.VITE_PORT}/api/users/logout`
+        : "https:/ren-a-car.onrender.com/api/users/logout",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      }
+    );
     let result9 = await res9.json();
     return result9;
   };
   //initializing reservation data
   useEffect(() => {
     const fetching = async () => {
-      let res2 = await fetch("https://ren-a-car.onrender.com/api/offices/allLocations", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+      console.log({
+        port: import.meta.env.VITE_PORT,
+        url: `http://localhost:${import.meta.env.VITE_PORT}`,
       });
+      let res2 = await fetch(
+        import.meta.env.VITE_NODE_ENV == "development"
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/offices/allLocations`
+          : "https:/ren-a-car.onrender.com/api/offices/allLocations",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        }
+      );
       let result2 = await res2.json();
       console.log({ result2 });
       setOfficesLocations(result2);
@@ -64,12 +102,23 @@ const WebsiteProvider = ({ children }) => {
   //initializing reservation data
   useEffect(() => {
     const fetching = async () => {
-      let res2 = await fetch("https://ren-a-car.onrender.com/api/offices/allLocations", {
-        method: "POST",
-        credentials: "include",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({}),
+      console.log({
+        port: import.meta.env.VITE_PORT,
+        url: `http://localhost:${import.meta.env.VITE_PORT}`,
       });
+      let res2 = await fetch(
+        import.meta.env.VITE_NODE_ENV == "development"
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/offices/allLocations`
+          : "https:/ren-a-car.onrender.com/api/offices/allLocations",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({}),
+        }
+      );
       let result2 = await res2.json();
       console.log({ result2 });
       setOfficesLocations(result2);

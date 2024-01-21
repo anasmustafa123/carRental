@@ -24,17 +24,22 @@ export default function Login(props) {
   const submitform = async (e) => {
     e.preventDefault();
     try {
-      const result = await fetch("https://ren-a-car.onrender.com/api/users/auth", {
-        method: "POST",
-        credentials: 'include',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
-        }),
-      });
+      const result = await fetch(
+        import.meta.env.VITE_NODE_ENV == "development"
+          ? `http://localhost:${import.meta.env.VITE_PORT}/api/users/auth`
+          : "https://ren-a-car.onrender.com/api/users/auth",
+        {
+          method: "POST",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formData.email,
+            password: formData.password,
+          }),
+        }
+      );
       let res = await result.json();
       console.log({ res });
       if (!result.ok) {

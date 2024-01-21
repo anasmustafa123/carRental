@@ -21,7 +21,9 @@ export default function Dashboard_Login(props) {
     e.preventDefault();
     try {
       const result = await fetch(
-        "https://ren-a-car.onrender.com/api/users/authAdmin",
+        import.meta.env.VITE_NODE_ENV == "development"
+        ? `http://localhost:${import.meta.env.VITE_PORT}/api/users/authAdmin`
+        : "https://ren-a-car.onrender.com/api/users/authAdmin",
         {
           method: "POST",
           credentials: "include",
@@ -44,7 +46,7 @@ export default function Dashboard_Login(props) {
         email: formData.email,
         password: formData.password,
       });
-      toast.success("User Login Successfully");
+      toast.success("Admin Login Successfully");
       adminLogin();
       setTimeout(() => {
         navigate("/admin");
