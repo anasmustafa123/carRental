@@ -18,9 +18,9 @@ const DashProvider = ({ children }) => {
   const [getCars, setCars] = useState([]);
   const [getCustomers, setCustomers] = useState([]);
   const [getReservations, setReservations] = useState([]);
-  
+
   const { isCustomerLoggedIn } = useAuth();
-  
+
   const getCarsFun = async (officeId, sDate, eDate) => {
     let res9 = await fetch(
       import.meta.env.VITE_NODE_ENV == "development"
@@ -41,15 +41,18 @@ const DashProvider = ({ children }) => {
     return result9;
   };
 
-  
   const deleteCustomer = async (customerId) => {
-    let res = await fetch(import.meta.env.VITE_NODE_ENV == "development"
+    let res = await fetch(
+      import.meta.env.VITE_NODE_ENV == "development"
         ? `http://localhost:${import.meta.env.VITE_PORT}`
-        : "https://ren-a-car.onrender.com/api/customers/delete", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({customerId}),
-    });
+        : "https://ren-a-car.onrender.com/api/customers/delete",
+      {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ customerId }),
+      }
+    );
     let result = await res.json();
     return result;
   };
@@ -63,6 +66,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/reservations/all",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -72,10 +76,13 @@ const DashProvider = ({ children }) => {
       setReservations(result);
       let res2 = await fetch(
         import.meta.env.VITE_NODE_ENV == "development"
-          ? `http://localhost:${import.meta.env.VITE_PORT}/api/offices/allLocations`
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/offices/allLocations`
           : "https://ren-a-car.onrender.com/api/offices/allLocations",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -89,6 +96,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/cars/all",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -102,6 +110,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/customers/all",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -111,10 +120,13 @@ const DashProvider = ({ children }) => {
       setCustomers(result4);
       let res5 = await fetch(
         import.meta.env.VITE_NODE_ENV == "development"
-          ? `http://localhost:${import.meta.env.VITE_PORT}/api/reservations/totalRevenueOnPeriod`
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/reservations/totalRevenueOnPeriod`
           : "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -128,10 +140,13 @@ const DashProvider = ({ children }) => {
       setYearRevenue(result5.totalRevenue);
       let res6 = await fetch(
         import.meta.env.VITE_NODE_ENV == "development"
-          ? `http://localhost:${import.meta.env.VITE_PORT}/api/reservations/totalRevenue`
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/reservations/totalRevenue`
           : "https://ren-a-car.onrender.com/api/reservations/totalRevenue",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -145,6 +160,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/users/count",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -158,6 +174,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/offices/count",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -171,6 +188,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/cars/count",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -184,6 +202,7 @@ const DashProvider = ({ children }) => {
           : "https://ren-a-car.onrender.com/api/customers/count",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -193,10 +212,13 @@ const DashProvider = ({ children }) => {
       setCustomersCount(result11.customers_num);
       let res12 = await fetch(
         import.meta.env.VITE_NODE_ENV == "development"
-          ? `http://localhost:${import.meta.env.VITE_PORT}/api/reservations/count`
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/reservations/count`
           : "https://ren-a-car.onrender.com/api/reservations/count",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -209,10 +231,13 @@ const DashProvider = ({ children }) => {
       console.log({ thismonth });
       let res13 = await fetch(
         import.meta.env.VITE_NODE_ENV == "development"
-          ? `http://localhost:${import.meta.env.VITE_PORT}/api/reservations/totalRevenueOnPeriod`
+          ? `http://localhost:${
+              import.meta.env.VITE_PORT
+            }/api/reservations/totalRevenueOnPeriod`
           : "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ month: thismonth }),
         }
@@ -232,6 +257,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/reservations/all", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -242,6 +268,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/offices/allLocations", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -252,6 +279,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/cars/all", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -262,6 +290,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/customers/all", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -274,6 +303,7 @@ const DashProvider = ({ children }) => {
         : "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
+credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -291,6 +321,7 @@ const DashProvider = ({ children }) => {
         : "https://ren-a-car.onrender.com/api/reservations/totalRevenue",
         {
           method: "POST",
+credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({}),
         }
@@ -302,6 +333,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/users/count", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -312,6 +344,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/offices/count", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -322,6 +355,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/cars/count", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -332,6 +366,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/customers/count", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -342,6 +377,7 @@ const DashProvider = ({ children }) => {
         ? `http://localhost:${import.meta.env.VITE_PORT}`
         : "https://ren-a-car.onrender.com/api/reservations/count", {
         method: "POST",
+credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({}),
       });
@@ -357,6 +393,7 @@ const DashProvider = ({ children }) => {
         : "https://ren-a-car.onrender.com/api/reservations/totalRevenueOnPeriod",
         {
           method: "POST",
+credentials: "include",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ month: thismonth }),
         }
