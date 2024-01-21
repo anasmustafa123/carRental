@@ -17,7 +17,7 @@ const WebsiteProvider = ({ children }) => {
     let res9 = await fetch(
       import.meta.env.VITE_NODE_ENV === "development"
         ? `http://localhost:${import.meta.env.VITE_PORT}/api/cars/getAvalible`
-        : "https:/ren-a-car.onrender.com/api/cars/getAvalible",
+        : "https://ren-a-car.onrender.com/api/cars/getAvalible",
       {
         method: "POST",
         credentials: "include",
@@ -40,7 +40,7 @@ const WebsiteProvider = ({ children }) => {
     let res9 = await fetch(
       import.meta.env.VITE_NODE_ENV == "development"
         ? `http://localhost:${import.meta.env.VITE_PORT}/api/offices/getId`
-        : "https:/ren-a-car.onrender.com/api/offices/getId",
+        : "https://ren-a-car.onrender.com/api/offices/getId",
       {
         method: "POST",
         credentials: "include",
@@ -62,7 +62,7 @@ const WebsiteProvider = ({ children }) => {
     let res9 = await fetch(
       import.meta.env.VITE_NODE_ENV == "development"
         ? `http://localhost:${import.meta.env.VITE_PORT}/api/users/logout`
-        : "https:/ren-a-car.onrender.com/api/users/logout",
+        : "https://ren-a-car.onrender.com/api/users/logout",
       {
         method: "POST",
         credentials: "include",
@@ -85,7 +85,7 @@ const WebsiteProvider = ({ children }) => {
           ? `http://localhost:${
               import.meta.env.VITE_PORT
             }/api/offices/allLocations`
-          : "https:/ren-a-car.onrender.com/api/offices/allLocations",
+          : "https://ren-a-car.onrender.com/api/offices/allLocations",
         {
           method: "POST",
           credentials: "include",
@@ -111,7 +111,7 @@ const WebsiteProvider = ({ children }) => {
           ? `http://localhost:${
               import.meta.env.VITE_PORT
             }/api/offices/allLocations`
-          : "https:/ren-a-car.onrender.com/api/offices/allLocations",
+          : "https://ren-a-car.onrender.com/api/offices/allLocations",
         {
           method: "POST",
           credentials: "include",
